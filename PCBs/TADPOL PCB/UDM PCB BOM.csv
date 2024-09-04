@@ -1,0 +1,15 @@
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"Servo2,Servo1";"JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical";2;"Conn_01x03_Socket";;;
+2;"Glider_Connection1,Frame_Connection1";"JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical";2;"Conn_01x04_Socket";;;
+3;"H4,H3,H2,H1";"MountingHole_3.2mm_M3";4;"MountingHole";;;
+4;"Voltage_Regulator_5V1";"TO-220-3_Vertical";1;"L4931-5";;;
+5;"U1";"DIP-8_W7.62mm";1;"NE555P";;;
+6;"R1";"R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical";1;"470";;;
+7;"Q2,Q1";"TO-220-3_Vertical";2;"TIP120";;;
+8;"Power1";"JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical";1;"Conn_01x02_Socket";;;
+9;"C1";"CP_Radial_Tantal_D8.0mm_P5.00mm";1;"C_Polarized";;;
+10;"BZ1";"Buzzer_12x9.5RM7.6";1;"Buzzer";;;
+11;"Teensy4.1";"Teensy_4.1";1;"~";;;
+12;"BNO1";"BNO055";1;"~";;;
+13;"Sparkfun_NEO-M9N1";"Sparkfun_NEO-M9N";1;"~";;;
+14;"BMP1";"BMP280";1;"~";;;
