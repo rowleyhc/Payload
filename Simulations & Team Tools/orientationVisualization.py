@@ -8,7 +8,7 @@ import time
 import numpy as np
 
 # Load CSV file
-df = pd.read_csv('Simulations & Team Tools/cleaned_flight_data/TADPOL_April_Cleaned.csv')
+df = pd.read_csv('Simulations & Team Tools/cleaned_flight_data/L1_Drift_Control_Test_2-3-24_cleaned.csv')
 
 
 def is_valid_quaternion(q):
@@ -40,8 +40,8 @@ ax = fig.add_subplot(111, projection='3d')
 
 # Create a block (or arrow) vertices
 block_vertices = np.array([
-    [-1, -2, -1], [1, -2, -1], [1, 2, -1], [-1, 2, -1],
-    [-1, -2, 1], [1, -2, 1], [1, 2, 1], [-1, 2, 1]
+    [-2, -1, -1], [2, -1, -1], [2, 1, -1], [-2, 1, -1],
+    [-2, -1, 1], [2, -1, 1], [2, 1, 1], [-2, 1, 1]
 ])
 
 # Define the 12 triangles composing the block
