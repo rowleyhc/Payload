@@ -1,8 +1,8 @@
-float dc=.5;
+float dc=.7;
 int hz=20;
 float pwmtimer=millis();
-int fwdPin=10;
-int bckPin=9;
+int fwdPin=3;//10 for micro;
+int bckPin=2;//9 for micro;
 
 void setup() {
   // put your setup code here, to run once:
@@ -12,6 +12,9 @@ void setup() {
 }
 
 void loop() {
+
+  if (millis()>10000){dc=1;}
+
   if((millis()-pwmtimer)<(1000*abs(dc)/hz)){
     if(dc>0){
       digitalWrite(fwdPin,HIGH);
