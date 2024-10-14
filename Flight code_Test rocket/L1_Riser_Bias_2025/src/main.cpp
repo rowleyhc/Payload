@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <MMFS.h>
-#include "tail_rotor_kf.h"
-#include "tail_rotor_state.h"
+#include "l1_riser_bias_kf.h"
+#include "l1_riser_bias_state.h"
 
 
 const int BUZZER_PIN = 33; // TODO update this to whats actually on the board
@@ -9,13 +9,13 @@ int allowedPins[] = {BUZZER_PIN};
 BlinkBuzz bb(allowedPins, 1, true);
 
 mmfs::BMP390 barometer;
-mmfs::BNO055 tail_rotor_imu; 
+mmfs::BNO055 l1_riser_bias_imu; 
 mmfs::MAX_M10S gps;
-mmfs::Sensor* tail_rotor_sensors[3] = {&barometer, &tail_rotor_imu, &gps};
+mmfs::Sensor* l1_riser_bias_sensors[3] = {&barometer, &l1_riser_bias_imu, &gps};
 mmfs::Logger logger;
 mmfs::ErrorHandler errorHandler;
-TailRotorKF kf;
-TailRotorState TailRotor(tail_rotor_sensors, 3, &kf);
+L1RiserBiasKF kf;
+L1RiserBiasState L1RiserBias(l1_riser_bias_sensors, 3, &kf);
 
 const int SENSOR_BIAS_CORRECTION_DATA_LENGTH = 2;
 const int SENSOR_BIAS_CORRECTION_DATA_IGNORE = 1;
@@ -36,7 +36,7 @@ void setup() {
     if (!(logger.isPsramReady()))
         bb.onoff(BUZZER_PIN, 200, 3);
     
-    if(!TailRotor.init())
+    if(!L1RiserBias.init())
         bb.onoff(BUZZER_PIN, 200, 3);
 
     logger.recordLogData(mmfs::INFO_, "Leaving Setup");
@@ -52,5 +52,5 @@ void loop() {
         return;
     timeOfLastUpdate = currentTime;
     
-    TailRotor.updateState();
+    L1RiserBias.updateState();
 }

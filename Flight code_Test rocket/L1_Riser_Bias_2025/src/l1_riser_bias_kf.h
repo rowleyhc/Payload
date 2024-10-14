@@ -1,14 +1,14 @@
-#ifndef TAIL_ROTOR_KF_H
-#define TAIL_ROTOR_KF_H
+#ifndef L1_RISER_BIAS_KF_H
+#define L1_RISER_BIAS_KF_H
 
 #include "../src/Filters/LinearKalmanFilter.h"
 
 namespace mmfs {
 
-class TailRotorKF : public LinearKalmanFilter {
+class L1RiserBiasKF : public LinearKalmanFilter {
 public:
-    TailRotorKF();
-    ~TailRotorKF() = default;
+    L1RiserBiasKF();
+    ~L1RiserBiasKF() = default;
 
     // Override getter methods to provide subteam-specific matrix implementations
     void initialize() override {};
@@ -21,4 +21,4 @@ public:
 
 } // namespace mmfs
 
-#endif // TAIL_ROTOR_KF_H
+#endif // L1_RISER_BIAS_KF_H

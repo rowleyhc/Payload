@@ -1,12 +1,12 @@
-#ifndef TAIL_ROTOR_STATE_H
-#define TAIL_ROTOR_STATE_H
+#ifndef L1_RISER_BIAS_H
+#define L1_RISER_BIAS_H
 
 #include "MMFS.h"
 #include "Target.h"
 
 using namespace mmfs;
 
-enum TailRotorStages { // TODO update this
+enum L1RiserBiasStages { // TODO update this
     PRELAUNCH,
     BOOST,
     COAST,
@@ -23,10 +23,10 @@ extern const Line line1;
 extern Obstacle* obstacles[];
 extern const Point targetPoints[];
 
-class TailRotorState : public State
+class L1RiserBiasState : public State
 {
 public:
-    TailRotorState(Sensor **sensors, int numSensors, LinearKalmanFilter *kfilter, bool stateRecordsOwnData = true);
+    L1RiserBiasState(Sensor **sensors, int numSensors, LinearKalmanFilter *kfilter, bool stateRecordsOwnData = true);
     void updateState(double newTime = -1) override;
     int buzzerPin;
 
