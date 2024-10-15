@@ -25,6 +25,7 @@ void L1RiserBiasState::updateState(double newTime)
 {
     State::updateState(newTime); // call base version for sensor updates
     determineStage(); // determine the stage of the flight
+    
 }
 
 void L1RiserBiasState::determineStage() // TODO Change this for the tail rotor
