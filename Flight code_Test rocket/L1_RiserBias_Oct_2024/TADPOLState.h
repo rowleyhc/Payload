@@ -46,6 +46,10 @@ public:
     void goDirection(double direction);
     Point getTargetCoordinates();
 
+    void turnRate;
+    double rampRate = DEFAULT_RAMP_RATE; // define this
+    double goalCommand = DEFAULT_GOAL_COMMAND; // define this
+
 private:
 
 };
@@ -55,7 +59,31 @@ void TADPOLState::servoSetup(int leftServoPin,int rightServoPin,double leftSerNe
   leftServo.write(leftSerNeutral);
   rightServo.write(rightSerNeutral);
 }
-
+// Turn rate limiter
+void TADPOLState::turnRate(double goalAngle, double loopTime) {
+double delta=goalAngle-TADPOLSTATE.goalCommand;
+if (abs(delta) > 180) {
+    if (goalAngle < 180 ) {
+        TADPOLSTATE.goalCommand -= 360;
+    }
+    else {
+        TADPOLSTATE.goalCommand += 360;
+    }
+    delta=goalAngle-TADPOLSTATE.goalCommand;
+}
+if (abs(delta) < 1.2*TADPOLSTATE.rampRate*loopTime) {
+    TADPOLSTATE.goalCommand=goalAngle;
+}
+else {
+    TADPOLSTATE.goalCommand += TADPOLSTATE.rampRate*loopTime*abs(delta)/delta;
+}
+if (TADPOLSTATE.goalCommand > 360){
+    TADPOLSTATE.goalCommand -= 360;
+}
+else if (TADPOLSTATE.goalCommand < 0) {
+    TADPOLSTATE.goalCommand += 360;
+}
+}
 void TADPOLState::moveServo(double delta){
   //See https://github.com/Terrapin-Rocket-Team/SAC-TRT24/blob/main/Code/Payload/Orientation%20Matlab/Orientation.md for
   //an explaination of how the values here were derivated
